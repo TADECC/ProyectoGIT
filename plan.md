@@ -522,3 +522,197 @@ Construir un repositorio profesional completo con:
 Resultado esperado:
 
 Repositorio listo para portafolio profesional.
+
+# Nivel 22 - Desarrollo Asistido por IA
+# Git + GitHub + Claude Code
+
+Estado: ⬜ Pendiente
+
+Objetivos:
+
+Integrar Git, GitHub y Claude Code dentro de un flujo moderno de desarrollo profesional.
+
+---
+
+## Conceptos Fundamentales
+
+Comprender el papel de cada herramienta:
+
+```text
+Git         → Control de versiones
+
+GitHub      → Colaboración y repositorio remoto
+
+Claude Code → Agente de desarrollo asistido por IA
+```
+
+---
+
+## Configuración Inicial
+
+Temas:
+
+- Instalación de Claude Code
+- Autenticación
+- Integración con VS Code
+- Acceso a repositorios Git
+
+---
+
+## Flujo Profesional de Desarrollo
+
+Proceso recomendado:
+
+```text
+Issue
+ ↓
+Crear rama
+ ↓
+Claude Code implementa cambios
+ ↓
+Revisión humana
+ ↓
+Tests
+ ↓
+Commit
+ ↓
+Push
+ ↓
+Pull Request
+ ↓
+Merge
+```
+
+---
+
+## Trabajo con Repositorios Existentes
+
+Capacidades:
+
+- Exploración de repositorios
+- Comprensión de arquitectura
+- Análisis de código
+- Generación de documentación
+- Refactorización
+
+Ejemplos:
+
+```text
+Explica este proyecto.
+
+Documenta este módulo.
+
+Refactoriza esta función.
+
+Genera pruebas unitarias.
+```
+
+---
+
+## Buenas Prácticas con Git
+
+Antes de solicitar cambios:
+
+```bash
+git switch -c feature-nueva-funcionalidad
+```
+
+Después de los cambios:
+
+```bash
+git diff
+```
+
+Validar siempre:
+
+```bash
+git status
+git diff
+git log
+```
+
+Antes de:
+
+```bash
+git add
+git commit
+git push
+```
+
+---
+
+## Pull Requests Asistidos por IA
+
+Temas:
+
+- Resúmenes automáticos
+- Explicación de commits
+- Documentación automática
+- Revisiones preliminares
+
+---
+
+## Aplicación en Ciencia de Datos e IA
+
+Uso profesional para:
+
+- Deep Learning
+- Machine Learning
+- Ciencia de Datos
+- Automatización
+- Investigación académica
+- Desarrollo experimental
+
+---
+
+## Limitaciones y Validación
+
+Comprender que:
+
+```text
+La IA acelera el desarrollo
+```
+
+pero no reemplaza:
+
+```text
+Validación humana
+```
+
+Siempre verificar:
+
+- Correctitud
+- Seguridad
+- Rendimiento
+- Reproducibilidad
+- Interpretabilidad
+
+---
+
+## Proyecto Final del Programa
+
+Construir un proyecto completo utilizando:
+
+✅ Git
+
+✅ GitHub
+
+✅ Pull Requests
+
+✅ GitHub Pages
+
+✅ GitHub Actions
+
+✅ Claude Code
+
+✅ Documentación profesional
+
+Resultado esperado:
+
+Repositorio profesional listo para:
+
+- Portafolio
+- Investigación
+- Consultoría
+- Docencia
+- Desarrollo de IA
