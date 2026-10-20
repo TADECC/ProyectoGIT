@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Entornos virtuales
+venv/
+.env
+
+# VS Code
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Modelos
+*.h5
+*.keras
+*.pth
+*.pt
+
+# Datos grandes opcionales
+*.csv
+*.parquet
+
+# Logs
+*.log
+
+# Sistema
+.DS_Store
+Thumbs.db
