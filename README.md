@@ -6,3 +6,5 @@ Este repositorio se utiliza para aprender:
 - Branches
 - Pull Requests
 - Merge Conflicts
+
+## Probando Git Stash
