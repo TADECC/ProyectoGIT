@@ -442,16 +442,11 @@ results/
 README.md
 requirements.txt
 ```
-
----
-
-# Próximos Niveles
-
 ---
 
 # Nivel 18 - GitHub Pages
 
-Estado: ⬜ Pendiente
+Estado: ✅ Completado
 
 Objetivos:
 
@@ -465,6 +460,12 @@ Temas:
 - index.html
 - GitHub Pages
 - Publicación automática
+
+---
+
+---
+
+# Próximos Niveles
 
 ---
 
@@ -482,6 +483,7 @@ Temas:
 - Workflows
 - Automatización de pruebas
 - Automatización de despliegues
+- Artefactos
 
 ---
 
