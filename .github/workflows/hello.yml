@@ -9,14 +9,11 @@ jobs:
 
     steps:
 
-      - name: Mostrar fecha
-        run: date
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
 
-      - name: Mostrar usuario
-        run: whoami
+      - name: Mostrar archivos
+        run: ls -la
 
-      - name: Mostrar directorio
+      - name: Mostrar directorio actual
         run: pwd
-
-      - name: Mensaje final
-        run: echo "Workflow terminado"
