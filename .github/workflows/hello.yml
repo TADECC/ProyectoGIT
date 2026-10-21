@@ -8,5 +8,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Mensaje
-        run: echo "Hola desde GitHub Actions"
+
+      - name: Mostrar fecha
+        run: date
+
+      - name: Mostrar usuario
+        run: whoami
+
+      - name: Mostrar directorio
+        run: pwd
+
+      - name: Mensaje final
+        run: echo "Workflow terminado"
