@@ -1,10 +1,280 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Mi primera página GitHub Pages</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portafolio</title>
+<style>
+  :root{
+    --ink:#0A1628;      /* fondo profundo */
+    --navy:#11284B;     /* superficies oscuras */
+    --blue:#1D4E89;     /* azul analítico */
+    --teal:#2BB3A3;     /* acento principal (datos) */
+    --gold:#E3B04B;     /* acento cálido (media / énfasis) */
+    --coral:#E4572E;    /* alerta / outlier, uso mínimo */
+    --paper:#F5F3EE;    /* papel milimetrado */
+    --white:#FFFFFF;
+    --line:#D9DEE7;
+    --mute:#8A97AD;
+    --radius:20px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:100vh;background:var(--ink);overflow:hidden;
+    display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:48px;align-items:center;
+    padding:clamp(24px,5vw,72px);
+    background-image:
+      linear-gradient(rgba(79,157,222,.07) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(79,157,222,.07) 1px,transparent 1px),
+      linear-gradient(rgba(79,157,222,.14) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(79,157,222,.14) 1px,transparent 1px);
+    background-size:24px 24px,24px 24px,120px 120px,120px 120px;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(60% 60% at 75% 45%,rgba(43,179,163,.18),transparent 70%),
+               radial-gradient(40% 40% at 10% 0%,rgba(29,78,137,.45),transparent 70%);
+    pointer-events:none;
+  }
+  .identity{position:relative;display:flex;flex-direction:column;gap:22px}
+  .avatar{
+    width:112px;height:112px;border-radius:50%;
+    background:conic-gradient(from 210deg,var(--teal),var(--blue),var(--gold),var(--teal));
+    padding:4px;box-shadow:0 0 0 8px rgba(43,179,163,.10),0 20px 60px rgba(0,0,0,.45);
+  }
+  .avatar i{display:block;width:100%;height:100%;border-radius:50%;background:var(--navy)}
+  .bar{height:14px;border-radius:99px;background:rgba(255,255,255,.12)}
+  .bar.big{height:26px;width:86%;background:linear-gradient(90deg,var(--white),rgba(255,255,255,.55))}
+  .bar.gold{width:38%;height:10px;background:var(--gold)}
+  .bar.w1{width:92%}.bar.w2{width:74%}.bar.w3{width:56%}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+  .chip{width:64px;height:30px;border-radius:99px;border:1.5px solid rgba(255,255,255,.28)}
+  .chip.f{background:var(--teal);border-color:var(--teal)}
+  .chip.g{background:var(--gold);border-color:var(--gold)}
+  .cta{display:flex;gap:12px;margin-top:10px}
+  .btn{height:46px;border-radius:12px;width:140px}
+  .btn.p{background:var(--teal);box-shadow:0 10px 30px rgba(43,179,163,.35)}
+  .btn.s{border:1.5px solid rgba(255,255,255,.3);width:110px}
+
+  .stage{position:relative}
+  .stage svg{width:100%;height:auto;display:block;filter:drop-shadow(0 30px 60px rgba(0,0,0,.35))}
+
+  /* ---------- PALETA ---------- */
+  .palette{padding:clamp(40px,7vw,96px) clamp(24px,5vw,72px)}
+  .swatches{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border-radius:28px;overflow:hidden;
+    box-shadow:0 30px 80px rgba(10,22,40,.18);height:clamp(220px,34vw,380px)}
+  .sw{position:relative;transition:flex .3s}
+  .sw::after{content:"";position:absolute;left:18px;bottom:18px;width:34px;height:6px;border-radius:9px;background:currentColor;opacity:.55}
+  .sw:nth-child(1){background:var(--ink);color:#fff}
+  .sw:nth-child(2){background:var(--navy);color:#fff}
+  .sw:nth-child(3){background:var(--blue);color:#fff}
+  .sw:nth-child(4){background:var(--teal);color:var(--ink)}
+  .sw:nth-child(5){background:var(--gold);color:var(--ink)}
+  .sw:nth-child(6){background:var(--paper);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+  .tints{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:18px}
+  .tints div{display:grid;grid-template-rows:repeat(5,1fr);gap:6px}
+  .tints span{height:22px;border-radius:8px}
+
+  /* ---------- TARJETAS DE DATOS ---------- */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;padding:0 clamp(24px,5vw,72px) clamp(48px,7vw,96px)}
+  .card{background:var(--white);border-radius:var(--radius);padding:26px;border:1px solid var(--line);
+    box-shadow:0 1px 0 rgba(10,22,40,.04),0 18px 40px rgba(10,22,40,.06);display:flex;flex-direction:column;gap:18px;
+    transition:transform .25s,box-shadow .25s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(10,22,40,.12)}
+  .card.dark{background:var(--navy);border-color:transparent}
+  .card .head{display:flex;gap:8px;align-items:center}
+  .dot{width:10px;height:10px;border-radius:50%}
+  .head .line{height:8px;border-radius:9px;background:var(--line);width:90px;margin-left:8px}
+  .card.dark .head .line{background:rgba(255,255,255,.18)}
+  .card svg{width:100%;height:auto;display:block}
+
+  /* ---------- FRANJA FINAL ---------- */
+  .footer{height:120px;background:var(--ink);position:relative;overflow:hidden}
+  .footer svg{position:absolute;inset:0;width:100%;height:100%}
+
+  @media(max-width:860px){
+    .hero{grid-template-columns:1fr;min-height:auto;gap:32px}
+    .swatches{height:200px}
+  }
+  @media(prefers-reduced-motion:no-preference){
+    .sw{animation:rise .8s both}
+    .sw:nth-child(2){animation-delay:.06s}.sw:nth-child(3){animation-delay:.12s}
+    .sw:nth-child(4){animation-delay:.18s}.sw:nth-child(5){animation-delay:.24s}.sw:nth-child(6){animation-delay:.30s}
+    @keyframes rise{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+    .curve{stroke-dasharray:1600;stroke-dashoffset:1600;animation:draw 2.4s .2s ease forwards}
+    @keyframes draw{to{stroke-dashoffset:0}}
+  }
+</style>
 </head>
 <body>
-    <h1>Hola GitHub Pages</h1>
-    <p>Daniel Casallas</p>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="identity" aria-hidden="true">
+    <div class="avatar"><i></i></div>
+    <div class="bar big"></div>
+    <div class="bar gold"></div>
+    <div style="display:grid;gap:10px;margin-top:6px">
+      <div class="bar w1"></div><div class="bar w2"></div><div class="bar w3"></div>
+    </div>
+    <div class="chips"><span class="chip f"></span><span class="chip"></span><span class="chip g"></span><span class="chip"></span></div>
+    <div class="cta"><span class="btn p"></span><span class="btn s"></span></div>
+  </div>
+
+  <div class="stage" aria-label="Distribución normal">
+    <svg viewBox="0 0 800 520" role="img" aria-label="Curva de campana">
+      <defs>
+        <linearGradient id="fillC" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2BB3A3" stop-opacity=".55"/>
+          <stop offset="1" stop-color="#2BB3A3" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="strokeC" x1="0" x2="1">
+          <stop offset="0" stop-color="#4F9DDE"/><stop offset=".5" stop-color="#2BB3A3"/><stop offset="1" stop-color="#4F9DDE"/>
+        </linearGradient>
+        <clipPath id="sigma"><rect x="260" y="0" width="280" height="480"/></clipPath>
+      </defs>
+      <g id="axes" stroke="#8A97AD" stroke-opacity=".55" fill="none"></g>
+      <path id="area" fill="url(#fillC)" clip-path="url(#sigma)"/>
+      <path id="areaAll" fill="rgba(79,157,222,.08)"/>
+      <path id="curve" class="curve" fill="none" stroke="url(#strokeC)" stroke-width="4" stroke-linecap="round"/>
+      <g stroke-dasharray="4 7" stroke="#8A97AD" stroke-opacity=".6">
+        <line x1="260" y1="120" x2="260" y2="440"/><line x1="540" y1="120" x2="540" y2="440"/>
+        <line x1="120" y1="300" x2="120" y2="440"/><line x1="680" y1="300" x2="680" y2="440"/>
+      </g>
+      <line x1="400" y1="52" x2="400" y2="440" stroke="#E3B04B" stroke-width="2.5"/>
+      <circle cx="400" cy="52" r="8" fill="#E3B04B"/>
+      <circle cx="400" cy="52" r="16" fill="none" stroke="#E3B04B" stroke-opacity=".4"/>
+      <g id="hist"></g>
+    </svg>
+  </div>
+</header>
+
+<!-- PALETA -->
+<section class="palette" aria-label="Paleta de colores">
+  <div class="swatches">
+    <div class="sw"></div><div class="sw"></div><div class="sw"></div>
+    <div class="sw"></div><div class="sw"></div><div class="sw"></div>
+  </div>
+  <div class="tints" id="tints"></div>
+</section>
+
+<!-- TARJETAS -->
+<section class="cards" aria-label="Componentes de ejemplo">
+  <article class="card">
+    <div class="head"><span class="dot" style="background:var(--teal)"></span><span class="dot" style="background:var(--gold)"></span><span class="dot" style="background:var(--blue)"></span><span class="line"></span></div>
+    <svg id="scatter" viewBox="0 0 400 280"></svg>
+  </article>
+
+  <article class="card dark">
+    <div class="head"><span class="dot" style="background:var(--teal)"></span><span class="dot" style="background:var(--gold)"></span><span class="dot" style="background:#fff"></span><span class="line"></span></div>
+    <svg id="series" viewBox="0 0 400 280"></svg>
+  </article>
+
+  <article class="card">
+    <div class="head"><span class="dot" style="background:var(--blue)"></span><span class="dot" style="background:var(--teal)"></span><span class="dot" style="background:var(--coral)"></span><span class="line"></span></div>
+    <svg id="heat" viewBox="0 0 400 280"></svg>
+  </article>
+
+  <article class="card">
+    <div class="head"><span class="dot" style="background:var(--gold)"></span><span class="dot" style="background:var(--navy)"></span><span class="dot" style="background:var(--teal)"></span><span class="line"></span></div>
+    <svg id="box" viewBox="0 0 400 280"></svg>
+  </article>
+</section>
+
+<footer class="footer"><svg id="wave" viewBox="0 0 1200 120" preserveAspectRatio="none"></svg></footer>
+
+<script>
+(function(){
+  const NS="http://www.w3.org/2000/svg";
+  const $=id=>document.getElementById(id);
+  const el=(t,a={},p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p&&p.appendChild(e);return e};
+  // RNG con semilla (resultado estable)
+  let s=20261020;const rnd=()=>{s=(s*1664525+1013904223)%4294967296;return s/4294967296};
+  const gauss=()=>{let u=0,v=0;while(!u)u=rnd();while(!v)v=rnd();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)};
+  const C={ink:"#0A1628",navy:"#11284B",blue:"#1D4E89",teal:"#2BB3A3",gold:"#E3B04B",coral:"#E4572E",line:"#D9DEE7",mute:"#8A97AD"};
+
+  /* ---- HERO: campana ---- */
+  const axes=$("axes");
+  for(let x=120;x<=680;x+=70)el("line",{x1:x,y1:446,x2:x,y2:454},axes);
+  el("line",{x1:80,y1:440,x2:720,y2:440,"stroke-width":1.5},axes);
+  const pts=[];for(let x=80;x<=720;x+=4){const z=(x-400)/93;pts.push([x,440-340*Math.exp(-z*z/2)])}
+  const d="M"+pts.map(p=>p[0]+","+p[1].toFixed(1)).join(" L");
+  $("curve").setAttribute("d",d);
+  const closed=d+" L720,440 L80,440 Z";
+  $("area").setAttribute("d",closed);$("areaAll").setAttribute("d",closed);
+  // histograma tenue detrás
+  const h=$("hist");const bins=24,bw=640/bins;
+  for(let i=0;i<bins;i++){
+    const x=80+i*bw+bw/2,z=(x-400)/93,v=340*Math.exp(-z*z/2)*(.78+rnd()*.3);
+    el("rect",{x:80+i*bw+3,y:440-v,width:bw-6,height:v,rx:4,fill:Math.abs(z)<1?C.teal:C.blue,"fill-opacity":Math.abs(z)<1?.22:.16},h);
+  }
+  h.parentNode.insertBefore(h,$("curve"));
+
+  /* ---- Tonos de la paleta ---- */
+  const base=[C.ink,C.navy,C.blue,C.teal,C.gold,"#F5F3EE"];
+  const mix=(h,t,to)=>{const a=parseInt(h.slice(1),16),b=parseInt(to.slice(1),16);
+    const m=(sh)=>Math.round(((a>>sh)&255)*(1-t)+((b>>sh)&255)*t);
+    return "rgb("+m(16)+","+m(8)+","+m(0)+")"};
+  const tints=$("tints");
+  base.forEach(b=>{const col=document.createElement("div");
+    [0,.2,.4,.6,.8].forEach(t=>{const sp=document.createElement("span");sp.style.background=mix(b,t,"#FFFFFF");if(b==="#F5F3EE")sp.style.background=mix(b,t,"#0A1628");col.appendChild(sp)});
+    tints.appendChild(col)});
+
+  /* ---- Dispersión + regresión ---- */
+  const sc=$("scatter");
+  for(let i=0;i<=5;i++){el("line",{x1:30,x2:380,y1:20+i*48,y2:20+i*48,stroke:C.line,"stroke-width":1},sc);el("line",{y1:20,y2:260,x1:30+i*70,x2:30+i*70,stroke:C.line,"stroke-width":1},sc)}
+  el("line",{x1:30,y1:260,x2:380,y2:260,stroke:C.ink,"stroke-width":1.5},sc);el("line",{x1:30,y1:20,x2:30,y2:260,stroke:C.ink,"stroke-width":1.5},sc);
+  el("path",{d:"M30,238 L380,52 L380,100 L30,262 Z",fill:C.teal,"fill-opacity":.12},sc);
+  const P=[];for(let i=0;i<46;i++){const x=40+rnd()*330;const y=250-(x-30)*.53+gauss()*20;P.push([x,Math.max(26,Math.min(254,y))])}
+  P.forEach(([x,y],i)=>el("circle",{cx:x,cy:y,r:i%11===0?6:4.5,fill:i%11===0?C.gold:C.blue,"fill-opacity":.85},sc));
+  el("line",{x1:30,y1:250,x2:380,y2:64,stroke:C.teal,"stroke-width":3,"stroke-linecap":"round"},sc);
+
+  /* ---- Serie temporal con banda ---- */
+  const se=$("series");
+  for(let i=0;i<5;i++)el("line",{x1:20,x2:385,y1:30+i*55,y2:30+i*55,stroke:"#fff","stroke-opacity":.08},se);
+  const L=[],U=[],M=[];let v=180;
+  for(let i=0;i<=40;i++){v+=gauss()*9-1.2;const x=20+i*9.1,y=Math.max(60,Math.min(230,v));const w=8+i*.9;M.push([x,y]);U.push([x,y-w]);L.push([x,y+w])}
+  const pp=a=>a.map(p=>p[0].toFixed(1)+","+p[1].toFixed(1)).join(" L");
+  el("path",{d:"M"+pp(U)+" L"+pp(L.slice().reverse()).replace(/^/,"")+" Z",fill:C.teal,"fill-opacity":.2},se);
+  el("path",{d:"M"+pp(M),fill:"none",stroke:C.teal,"stroke-width":3,"stroke-linejoin":"round"},se);
+  el("path",{d:"M"+pp(M.slice(0,26)),fill:"none",stroke:"#fff","stroke-width":3,"stroke-linejoin":"round","stroke-opacity":.9},se);
+  el("line",{x1:M[25][0],x2:M[25][0],y1:20,y2:260,stroke:C.gold,"stroke-dasharray":"4 6","stroke-width":2},se);
+  el("circle",{cx:M[25][0],cy:M[25][1],r:7,fill:C.gold},se);
+
+  /* ---- Mapa de calor (correlaciones) ---- */
+  const ht=$("heat"),n=8,cs=30;
+  const col=t=>{ // divergente: coral - papel - azul/teal
+    if(t>=0)return mix("#F5F3EE",t,C.blue);return mix("#F5F3EE",-t,C.coral)};
+  for(let i=0;i<n;i++)for(let j=0;j<n;j++){
+    const t=i===j?1:Math.max(-1,Math.min(1,Math.sin(i*1.7+j*2.3)*.9*Math.exp(-Math.abs(i-j)*.12)));
+    el("rect",{x:80+j*cs+j*2,y:20+i*cs+i*2,width:cs,height:cs,rx:6,fill:col(i===j?1:t)},ht);
+  }
+  for(let i=0;i<n;i++){el("rect",{x:28,y:20+i*32+8,width:36,height:12,rx:6,fill:C.line},ht)}
+
+  /* ---- Diagrama de cajas ---- */
+  const bx=$("box");
+  for(let i=0;i<5;i++)el("line",{x1:20,x2:385,y1:30+i*55,y2:30+i*55,stroke:C.line},bx);
+  const colors=[C.blue,C.teal,C.navy,C.gold,C.blue];
+  for(let i=0;i<5;i++){
+    const cx=60+i*72,med=140+gauss()*18,q1=med+30+rnd()*14,q3=med-30-rnd()*14,lo=q1+28+rnd()*14,hi=q3-28-rnd()*14;
+    el("line",{x1:cx,x2:cx,y1:hi,y2:lo,stroke:C.ink,"stroke-width":1.8},bx);
+    el("line",{x1:cx-10,x2:cx+10,y1:hi,y2:hi,stroke:C.ink,"stroke-width":1.8},bx);
+    el("line",{x1:cx-10,x2:cx+10,y1:lo,y2:lo,stroke:C.ink,"stroke-width":1.8},bx);
+    el("rect",{x:cx-22,y:q3,width:44,height:q1-q3,rx:8,fill:colors[i],"fill-opacity":.9},bx);
+    el("line",{x1:cx-22,x2:cx+22,y1:med,y2:med,stroke:i===3?C.ink:"#fff","stroke-width":3},bx);
+    if(i===2||i===4)el("circle",{cx:cx,cy:hi-16,r:4.5,fill:"none",stroke:C.coral,"stroke-width":2.2},bx);
+  }
+
+  /* ---- Onda final (muestreo) ---- */
+  const wv=$("wave");let g="M0,70";
+  for(let x=0;x<=1200;x+=10)g+=" L"+x+","+(70+Math.sin(x/38)*18+Math.sin(x/11)*6+gauss()*2).toFixed(1);
+  el("path",{d:g,fill:"none",stroke:C.teal,"stroke-width":2.5,"stroke-opacity":.9},wv);
+  el("path",{d:"M0,90 "+Array.from({length:121},(_,i)=>"L"+i*10+","+(90+Math.cos(i/4)*10).toFixed(1)).join(" "),fill:"none",stroke:C.gold,"stroke-width":1.8,"stroke-opacity":.7},wv);
+})();
+</script>
 </body>
 </html>
