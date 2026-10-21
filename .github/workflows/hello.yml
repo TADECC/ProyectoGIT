@@ -4,7 +4,8 @@ on:
   push:
 
 jobs:
-  saludo:
+  python-demo:
+
     runs-on: ubuntu-latest
 
     steps:
@@ -12,8 +13,13 @@ jobs:
       - name: Descargar repositorio
         uses: actions/checkout@v4
 
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verificar Python
+        run: python --version
+
       - name: Mostrar archivos
         run: ls -la
-
-      - name: Mostrar directorio actual
-        run: pwd
