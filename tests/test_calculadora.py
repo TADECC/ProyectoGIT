@@ -1,8 +1,7 @@
 # test_calculadora.py
 
-from src.calculadora import sumar
-from src.calculadora import restar
-from src.calculadora import multiplicar
+from src.calculadora import multiplicar, restar, sumar
+
 
 def test_suma():
     assert sumar(2, 3) == 5
