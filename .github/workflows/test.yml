@@ -20,3 +20,11 @@ jobs:
       - run: pip install -r requirements.txt
 
       - run: python -m pytest -v
+
+      - name: Revisar calidad
+        run: |
+          ruff check .
+
+      - name: Ejecutar notebook
+        run: |
+          jupyter nbconvert --to notebook --execute notebooks/demo.ipynb
