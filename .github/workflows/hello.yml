@@ -24,5 +24,8 @@ jobs:
       - name: Instalar dependencias
         run: pip install -r requirements.txt
 
+      - name: test
+      - run: pytest
+
       - name: Ejecutar script
         run: python hola.py
