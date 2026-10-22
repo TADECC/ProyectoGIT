@@ -27,4 +27,4 @@ jobs:
 
       - name: Ejecutar notebook
         run: |
-          jupyter nbconvert --to notebook --execute notebooks/demo.ipynb
+          jupyter nbconvert --to notebook --execute notebooks/demo.ipynb --output demo_ejecutado.ipynb
