@@ -471,7 +471,7 @@ Temas:
 
 # Nivel 19 - GitHub Actions
 
-Estado: ⬜ Pendiente
+Estado: ✅ Completado
 
 Objetivos:
 
